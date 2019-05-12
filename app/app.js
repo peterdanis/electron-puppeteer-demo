@@ -3,12 +3,6 @@ const { app, BrowserWindow } = require("electron"); // eslint-disable-line
 const path = require("path");
 const url = require("url");
 
-function appQuit() {
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
-}
-
 function createWindow() {
   win = new BrowserWindow({
     width: 1000,
@@ -24,23 +18,15 @@ function createWindow() {
     })
   );
 
-  // Window listeners
   win.once("ready-to-show", () => {
     win.show();
   });
 
   win.on("closed", () => {
-    win = null;
-    appQuit();
+    app.quit();
   });
 }
 
 app.on("ready", () => {
   createWindow();
-});
-
-app.on("activate", () => {
-  if (win === null) {
-    createWindow();
-  }
 });
