@@ -6,4 +6,4 @@ Demo of Electron + Puppeteer + Jest.
 - run `npm i` or `yarn`
 - run `npm run test` or `yarn test`
 
-To test without Jest run `npm run test-without-jest`
+To test without Jest run `npm run test-no-jest`

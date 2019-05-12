@@ -13,11 +13,11 @@
   "scripts": {
     "start": "electron .",
     "test": "jest app.test.js",
-    "test-without-jest": "node tests/test.js"
+    "test-no-jest": "node tests/test.js"
   },
   "devDependencies": {
-    "electron": "4.1.4",
+    "electron": "5",
     "jest": "^24.7.1",
-    "puppeteer-core": "1.14.0"
+    "puppeteer-core": "1.15.0"
   }
 }

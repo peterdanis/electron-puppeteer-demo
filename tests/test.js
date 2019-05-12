@@ -1,22 +1,21 @@
 const assert = require("assert");
 const electron = require("electron");
-const path = require("path");
 const puppeteer = require("puppeteer-core");
-
-let app;
-let page;
+const cp = require("child_process");
 
 const run = async () => {
-  app = await puppeteer.launch({
-    executablePath: electron,
-    args: ["."],
-    headless: false
+  cp.spawn(electron, [". --remote-debugging-port=9200"], {
+    shell: true
   });
-  const pages = await app.pages();
-  [page] = pages;
-  await page.setViewport({ width: 1000, height: 600 });
+
+  const browser = await puppeteer.connect({
+    browserURL: "http://localhost:9200",
+    defaultViewport: { width: 1000, height: 600 }
+  });
+  const [page] = await browser.pages();
 
   await page.waitForSelector("#demo");
+
   const text = await page.$eval("#demo", e => e.innerText);
 
   try {
@@ -26,7 +25,7 @@ const run = async () => {
     console.error(error.message);
   }
 
-  app.close();
+  await page.close();
 };
 
 run();
