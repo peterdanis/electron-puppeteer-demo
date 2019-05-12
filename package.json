@@ -12,7 +12,7 @@
   "main": "app/app.js",
   "scripts": {
     "start": "electron .",
-    "test": "jest --noStackTrace",
+    "test": "jest app.test.js",
     "test-without-jest": "node tests/test.js"
   },
   "devDependencies": {
