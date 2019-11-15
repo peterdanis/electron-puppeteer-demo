@@ -1,3 +1,5 @@
+![](https://github.com/peterdanis/electron-puppeteer-demo/workflows/Node%20CI/badge.svg)
+
 # electron-puppeteer-demo
 
 Demo of Electron + Puppeteer + Jest.
