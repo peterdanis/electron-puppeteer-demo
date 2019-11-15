@@ -1,21 +1,33 @@
 const electron = require("electron");
 const puppeteer = require("puppeteer-core");
-const cp = require("child_process");
+const { spawn } = require("child_process");
 
-// Set higher timeout value if your tests are timing, default is 5000ms
-// jest.setTimeout(5000);
+const timeout = 5000; // Timeout in miliseconds
 
 let page;
 
+jest.setTimeout(timeout);
+
 beforeAll(async () => {
-  cp.spawn(electron, [".", "--remote-debugging-port=9200"], {
+  const startTime = Date.now();
+  let browser;
+
+  spawn(electron, [".", "--remote-debugging-port=9200"], {
     shell: true
   });
 
-  const browser = await puppeteer.connect({
-    browserURL: "http://localhost:9200",
-    defaultViewport: { width: 1000, height: 600 }
-  });
+  while (!browser) {
+    try {
+      browser = await puppeteer.connect({
+        browserURL: "http://localhost:9200",
+        defaultViewport: { width: 1000, height: 600 }
+      });
+    } catch (error) {
+      if (Date.now() > startTime + timeout) {
+        throw error;
+      }
+    }
+  }
 
   [page] = await browser.pages();
 });
