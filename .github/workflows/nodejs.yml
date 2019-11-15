@@ -1,0 +1,26 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+    name: Ubuntu
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install
+        run: npm ci
+          npm test
+      - name: Test without Jest
+        run: "xvfb-run --auto-servernum --server-args='-screen 0, 1600x900x24' npm run test-no-jest"
+      - name: Test with Jest
+        run: "xvfb-run --auto-servernum --server-args='-screen 0, 1600x900x24' npm run test"
