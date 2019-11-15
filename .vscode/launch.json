@@ -10,6 +10,21 @@
       "name": "Jest",
       "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
       "args": ["-i"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Node (w/o node internals and modules)",
+      "program": "${file}",
+      "skipFiles": ["<node_internals>/**", "node_modules/**"],
+      "stopOnEntry": true
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Node",
+      "program": "${file}",
+      "stopOnEntry": true
     }
   ]
 }
