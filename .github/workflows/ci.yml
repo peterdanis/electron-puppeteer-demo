@@ -17,7 +17,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install
         run: npm ci
-          npm test
       - name: Test without Jest
         run: "xvfb-run --auto-servernum --server-args='-screen 0, 1600x900x24' npm run test-no-jest"
       - name: Test with Jest
@@ -37,7 +36,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install
         run: npm ci
-          npm test
       - name: Test without Jest
         run: test-no-jest
       - name: Test with Jest
@@ -57,7 +55,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install
         run: npm ci
-          npm test
       - name: Test without Jest
         run: test-no-jest
       - name: Test with Jest
