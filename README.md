@@ -1,4 +1,4 @@
-![](https://github.com/peterdanis/electron-puppeteer-demo/workflows/Node%20CI/badge.svg)
+![](https://github.com/peterdanis/electron-puppeteer-demo/workflows/CI/badge.svg)
 
 # electron-puppeteer-demo
 
