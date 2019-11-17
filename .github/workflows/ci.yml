@@ -3,11 +3,12 @@ name: CI
 on: [push]
 
 jobs:
-  Linux:
-    name: Linux
-    runs-on: ubuntu-latest
+  Test:
+    name: Test
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
         node-version: [8.x, 10.x, 12.x]
     steps:
       - uses: actions/checkout@v1
@@ -17,45 +18,15 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install
         run: npm install
-      - name: Test without Jest
+      - name: Test without Jest (Linux)
+        if: matrix.os == 'ubuntu-latest'
         run: "xvfb-run --auto-servernum --server-args='-screen 0, 1600x900x24' npm run test-no-jest"
-      - name: Test with Jest
+      - name: Test with Jest (Linux)
+        if: matrix.os == 'ubuntu-latest'
         run: "xvfb-run --auto-servernum --server-args='-screen 0, 1600x900x24' npm run test"
-
-  Windows:
-    name: Windows
-    runs-on: windows-latest
-    strategy:
-      matrix:
-        node-version: [8.x, 10.x, 12.x]
-    steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install
-        run: npm install
-      - name: Test without Jest
+      - name: Test without Jest (Windows & MacOS)
+        if: matrix.os != 'ubuntu-latest'
         run: npm run test-no-jest
-      - name: Test with Jest
-        run: npm run test
-
-  MacOS:
-    name: MacOS
-    runs-on: macos-latest
-    strategy:
-      matrix:
-        node-version: [8.x, 10.x, 12.x]
-    steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install
-        run: npm install
-      - name: Test without Jest
-        run: npm run test-no-jest
-      - name: Test with Jest
+      - name: Test with Jest (Windows & MacOS)
+        if: matrix.os != 'ubuntu-latest'
         run: npm run test
