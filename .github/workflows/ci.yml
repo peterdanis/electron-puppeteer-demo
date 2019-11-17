@@ -37,7 +37,7 @@ jobs:
       - name: Install
         run: npm install
       - name: Test without Jest
-        run: test-no-jest
+        run: npm run test-no-jest
       - name: Test with Jest
         run: npm run test
 
@@ -56,6 +56,6 @@ jobs:
       - name: Install
         run: npm install
       - name: Test without Jest
-        run: test-no-jest
+        run: npm run test-no-jest
       - name: Test with Jest
         run: npm run test

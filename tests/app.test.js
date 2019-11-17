@@ -3,7 +3,7 @@ const puppeteer = require("puppeteer-core");
 const { spawn } = require("child_process");
 
 const port = 9200; // Debugging port
-const timeout = 5000; // Timeout in miliseconds
+const timeout = 10000; // Timeout in miliseconds
 
 let page;
 
