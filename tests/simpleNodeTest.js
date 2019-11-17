@@ -9,7 +9,7 @@ let pid;
 const run = async () => {
   const port = 9200; // Debugging port
   const startTime = Date.now();
-  const timeout = 10000; // Timeout in miliseconds
+  const timeout = 20000; // Timeout in miliseconds
   let browser;
 
   pid = spawn(electron, [".", `--remote-debugging-port=${port}`], {
