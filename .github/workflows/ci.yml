@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install
-        run: npm install
+        run: npm ci
       - name: Test without Jest (Linux)
         if: matrix.os == 'ubuntu-latest'
         run: "xvfb-run --auto-servernum --server-args='-screen 0, 1600x900x24' npm run test-no-jest"
