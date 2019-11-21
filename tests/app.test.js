@@ -1,11 +1,12 @@
 const electron = require("electron");
+const kill = require("tree-kill");
 const puppeteer = require("puppeteer-core");
 const { spawn } = require("child_process");
 
 const port = 9200; // Debugging port
 const timeout = 20000; // Timeout in miliseconds
-
 let page;
+let pid;
 
 jest.setTimeout(timeout);
 
@@ -13,10 +14,12 @@ beforeAll(async () => {
   const startTime = Date.now();
   let browser;
 
-  spawn(electron, [".", `--remote-debugging-port=${port}`], {
+  // Start Electron with custom debugging port
+  pid = spawn(electron, [".", `--remote-debugging-port=${port}`], {
     shell: true
-  });
+  }).pid;
 
+  // Wait for Puppeteer to connect
   while (!browser) {
     try {
       browser = await puppeteer.connect({
@@ -26,7 +29,7 @@ beforeAll(async () => {
       [page] = await browser.pages();
     } catch (error) {
       if (Date.now() > startTime + timeout) {
-        break;
+        throw error;
       }
     }
   }
@@ -36,19 +39,15 @@ afterAll(async () => {
   try {
     await page.close();
   } catch (error) {
-    // Do nothing
+    kill(pid);
   }
 });
 
 describe("App", () => {
   test("Text matches", async () => {
     let text;
-    try {
-      await page.waitForSelector("#demo");
-      text = await page.$eval("#demo", element => element.innerText);
-      expect(text).toBe("Demo of Electron + Puppeteer + Jest.");
-    } catch (error) {
-      // Do nothing
-    }
+    await page.waitForSelector("#demo");
+    text = await page.$eval("#demo", element => element.innerText);
+    expect(text).toBe("Demo of Electron + Puppeteer + Jest.");
   });
 });

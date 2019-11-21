@@ -10,15 +10,17 @@ const run = async () => {
   const port = 9200; // Debugging port
   const startTime = Date.now();
   const timeout = 20000; // Timeout in miliseconds
-  let browser;
+  let app;
 
+  // Start Electron with custom debugging port
   pid = spawn(electron, [".", `--remote-debugging-port=${port}`], {
     shell: true
   }).pid;
 
-  while (!browser) {
+  // Wait for Puppeteer to connect
+  while (!app) {
     try {
-      browser = await puppeteer.connect({
+      app = await puppeteer.connect({
         browserURL: `http://localhost:${port}`,
         defaultViewport: { width: 1000, height: 600 }
       });
@@ -29,7 +31,7 @@ const run = async () => {
     }
   }
 
-  const [page] = await browser.pages();
+  const [page] = await app.pages();
   await page.waitForSelector("#demo");
   const text = await page.$eval("#demo", element => element.innerText);
   assert(text === "Demo of Electron + Puppeteer + Jest.");
@@ -41,7 +43,7 @@ run()
     console.log("Test passed");
   })
   .catch(error => {
-    console.log(`Test failed. Error: ${error.message}`);
+    console.error(`Test failed. Error: ${error.message}`);
     kill(pid, () => {
       process.exit(1);
     });
