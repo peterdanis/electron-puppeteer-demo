@@ -1,8 +1,6 @@
-![](https://github.com/peterdanis/electron-puppeteer-demo/workflows/CI/badge.svg)
+# Demo of Electron + Puppeteer + Jest.
 
-# electron-puppeteer-demo
-
-Demo of Electron + Puppeteer + Jest.
+[![Github Actions badge](https://github.com/peterdanis/electron-puppeteer-demo/workflows/CI/badge.svg?event=push)](https://github.com/peterdanis/electron-puppeteer-demo/actions)
 
 - clone repo and "cd" into it
 - run `npm i` or `yarn`
