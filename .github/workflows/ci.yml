@@ -16,7 +16,7 @@ on:
 
 jobs:
   Test:
-    name: Test
+    name: ${{ matrix.os }} - node ${{ matrix.node-version }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
