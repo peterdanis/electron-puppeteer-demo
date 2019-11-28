@@ -1,4 +1,4 @@
-name: CI
+name: Tests
 
 on:
   push:
@@ -16,18 +16,28 @@ on:
 
 jobs:
   Test:
-    name: ${{ matrix.os }} - node ${{ matrix.node-version }}
+    name: Electron ${{ matrix.electron }} (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
+    env:
+      node-version: 12.x
     strategy:
+      fail-fast: false
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
-        node-version: [10.x, 12.x]
+        electron: [5, 6, 7, beta]
+        # Use older Node version for one test
+        include:
+          - os: ubuntu-latest
+            electron: 5
+            node-version: 10.x
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.node-version || env.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.node-version || env.node-version }}
+      - name: Use Electron ${{ matrix.electron }}
+        run: npm install --save-dev --package-lock-only electron@${{ matrix.electron }}
       - name: Install
         run: npm ci
       - name: Test without Jest (Linux)
