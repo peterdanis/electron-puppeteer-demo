@@ -15,13 +15,15 @@ spawn(electron, [".", `--remote-debugging-port=${port}`], { shell: true });
 ```
 ...and then connect to it via `puppeteer.connect` method
 ```Javascript
-(() => {
-  puppeteer.connect({
+(async () => {
+  await puppeteer.connect({
         browserURL: `http://localhost:${port}`,
         defaultViewport: { width: 1000, height: 600 }
       });
 })()
 ```
+
+For full example please see https://github.com/peterdanis/electron-puppeteer-demo/blob/master/tests/simpleNodeTest.js
 
 ## Test status
 
