@@ -4,7 +4,7 @@ Simple repo to showcase how to use Puppeteer for end-to-end testing of Electron 
 
 For Electron using `puppeteer-core` package is recommended instead of standard `puppeteer` package, as the `-core` version does not download Chromium by default.
 
-To connect Electron and Puppeteer together you have to start Electron app by yourself (via `child_process.spawn`)...
+To connect Electron and Puppeteer together you have to start Electron app yourself (via `child_process.spawn`)...
 ```Javascript
 const electron = require("electron");
 const puppeteer = require("puppeteer-core");
@@ -29,7 +29,7 @@ For full example please see https://github.com/peterdanis/electron-puppeteer-dem
 
 [![Github Actions badge](https://github.com/peterdanis/electron-puppeteer-demo/workflows/Tests/badge.svg?event=push)](https://github.com/peterdanis/electron-puppeteer-demo/actions)
 
-Currently the test are being run for Electron versions 5, 6, 7 and 8 (beta) on Linux, MacOS and Windows. [Go to test results](https://github.com/peterdanis/electron-puppeteer-demo/actions)
+Currently the tests are being run for Electron versions 5, 6, 7 and 8 (beta) on Linux, MacOS and Windows. [Go to test results](https://github.com/peterdanis/electron-puppeteer-demo/actions)
 
 ## How to use
 - clone repo and "cd" into it
