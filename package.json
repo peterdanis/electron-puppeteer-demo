@@ -23,7 +23,7 @@
     "electron": "7.1.10",
     "eslint": "^6.8.0",
     "jest": "^25.1.0",
-    "puppeteer-core": "2.0.0",
+    "puppeteer-core": "2.1.0",
     "tree-kill": "^1.2.2"
   }
 }
