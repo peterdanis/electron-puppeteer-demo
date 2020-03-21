@@ -4,7 +4,7 @@ const kill = require("tree-kill");
 const puppeteer = require("puppeteer-core");
 const { spawn } = require("child_process");
 
-let pid;
+let spawnedProcess;
 
 const run = async () => {
   const port = 9200; // Debugging port
@@ -13,9 +13,14 @@ const run = async () => {
   let app;
 
   // Start Electron with custom debugging port
-  pid = spawn(electron, [".", `--remote-debugging-port=${port}`], {
+  spawnedProcess = spawn(electron, [".", `--remote-debugging-port=${port}`], {
     shell: true
-  }).pid;
+  });
+
+  // Log errors of spawned process to console
+  spawnedProcess.stderr.on("data", data => {
+    console.error(`stderr: ${data}`);
+  });
 
   // Wait for Puppeteer to connect
   while (!app) {
@@ -44,7 +49,7 @@ run()
   })
   .catch(error => {
     console.error(`Test failed. Error: ${error.message}`);
-    kill(pid, () => {
+    kill(spawnedProcess.pid, () => {
       process.exit(1);
     });
   });
