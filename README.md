@@ -27,9 +27,9 @@ For full example please see https://github.com/peterdanis/electron-puppeteer-dem
 
 ## Test status
 
-[![Github Actions badge](https://github.com/peterdanis/electron-puppeteer-demo/workflows/Tests/badge.svg?event=push)](https://github.com/peterdanis/electron-puppeteer-demo/actions)
+[![Github Actions badge](https://github.com/peterdanis/electron-puppeteer-demo/workflows/Tests/badge.svg?event=push)](https://github.com/peterdanis/electron-puppeteer-demo/actions?query=workflow%3ATests+event%3Apush)
 
-Currently the tests are being run for Electron versions 5, 6, 7 and 8 (beta) on Linux, MacOS and Windows. [Go to test results](https://github.com/peterdanis/electron-puppeteer-demo/actions)
+Currently the tests are being run for Electron versions 5, 6, 7 and 8 (beta) on Linux, MacOS and Windows. [Go to test results](https://github.com/peterdanis/electron-puppeteer-demo/actions?query=workflow%3ATests+event%3Apush)
 
 ## How to use
 - clone repo and "cd" into it
