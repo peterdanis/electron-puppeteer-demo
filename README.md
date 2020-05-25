@@ -5,6 +5,7 @@ Simple repo to showcase how to use Puppeteer for end-to-end testing of Electron 
 For Electron using `puppeteer-core` package is recommended instead of standard `puppeteer` package, as the `-core` version does not download Chromium by default.
 
 To connect Electron and Puppeteer together you have to start Electron app yourself (via `child_process.spawn`)...
+
 ```Javascript
 const electron = require("electron");
 const puppeteer = require("puppeteer-core");
@@ -13,7 +14,9 @@ const port = 9200;
 
 spawn(electron, [".", `--remote-debugging-port=${port}`], { shell: true });
 ```
+
 ...and then connect to it via `puppeteer.connect` method
+
 ```Javascript
 (async () => {
   await puppeteer.connect({
@@ -29,9 +32,10 @@ For full example please see https://github.com/peterdanis/electron-puppeteer-dem
 
 [![Github Actions badge](https://github.com/peterdanis/electron-puppeteer-demo/workflows/Tests/badge.svg?event=push)](https://github.com/peterdanis/electron-puppeteer-demo/actions?query=workflow%3ATests+event%3Apush)
 
-Currently the tests are being run for Electron versions from 5 to 9 (beta) on Linux, MacOS and Windows. [Go to test results](https://github.com/peterdanis/electron-puppeteer-demo/actions?query=workflow%3ATests+event%3Apush)
+Currently the tests are being run for Electron versions from 5 to 10 (beta) on Linux, MacOS and Windows. [Go to test results](https://github.com/peterdanis/electron-puppeteer-demo/actions?query=workflow%3ATests+event%3Apush)
 
 ## How to use
+
 - clone repo and "cd" into it
 - run `npm i` or `yarn`
 - run `npm run test-no-jest` to run test without Jest
