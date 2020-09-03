@@ -32,7 +32,7 @@ For full example please see https://github.com/peterdanis/electron-puppeteer-dem
 
 [![Github Actions badge](https://github.com/peterdanis/electron-puppeteer-demo/workflows/Tests/badge.svg?event=push)](https://github.com/peterdanis/electron-puppeteer-demo/actions?query=workflow%3ATests+event%3Apush)
 
-Currently the tests are being run for Electron versions from 5 to 10 (beta) on Linux, MacOS and Windows. [Go to test results](https://github.com/peterdanis/electron-puppeteer-demo/actions?query=workflow%3ATests+event%3Apush)
+Currently the tests are being run for Electron versions from 5 to 11 (beta) on Linux, MacOS and Windows. [Go to test results](https://github.com/peterdanis/electron-puppeteer-demo/actions?query=workflow%3ATests+event%3Apush)
 
 ## How to use
 
