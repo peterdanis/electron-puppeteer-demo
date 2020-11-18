@@ -31,6 +31,9 @@ jobs:
             electron: 5
             node-version: 10.x
     steps:
+      - name: Unset NPM prefix
+        run: unset npm_config_prefix
+        if: matrix.os == 'macos-latest'
       - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node-version || env.node-version }}
         uses: actions/setup-node@v1
