@@ -24,7 +24,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
-        electron: [12, 13, 14, 15, beta]
+        electron: [12, 13, 14, 15, 16, beta]
         # Use older Node version for one test
         include:
           - os: ubuntu-latest
