@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "electron": "^16.0.7",
-    "eslint": "^8.6.0",
+    "eslint": "^8.7.0",
     "jest": "^27.4.7",
     "puppeteer-core": "13.1.1",
     "tree-kill": "^1.2.2"
