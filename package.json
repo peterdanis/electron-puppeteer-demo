@@ -20,7 +20,7 @@
     "test-watch": "jest --watch"
   },
   "devDependencies": {
-    "electron": "^16.0.7",
+    "electron": "^17.0.0",
     "eslint": "^8.7.0",
     "jest": "^27.4.7",
     "puppeteer-core": "13.1.2",
