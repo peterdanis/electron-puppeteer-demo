@@ -24,11 +24,11 @@ jobs:
       fail-fast: false
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
-        electron: [12, 13, 14, 15, 16, beta]
+        electron: [12, 13, 14, 15, 16, 17, beta]
         # Use older Node version for one test
         include:
           - os: ubuntu-latest
-            electron: 15
+            electron: 17
             node-version: 14.x
     steps:
       - uses: actions/checkout@v1
