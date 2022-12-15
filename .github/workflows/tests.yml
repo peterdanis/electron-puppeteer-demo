@@ -19,17 +19,12 @@ jobs:
     name: Electron ${{ matrix.electron }} (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     env:
-      node-version: 16.x
+      node-version: 18.x
     strategy:
       fail-fast: false
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
-        electron: [12, 13, 14, 15, 16, 17, beta]
-        # Use older Node version for one test
-        include:
-          - os: ubuntu-latest
-            electron: 17
-            node-version: 14.x
+        electron: [18, 19, 20, 21, 22, beta]
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node-version || env.node-version }}
