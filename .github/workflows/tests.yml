@@ -19,7 +19,7 @@ jobs:
     name: Electron ${{ matrix.electron }} (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     env:
-      node-version: 18.x
+      node-version: 14.x
     strategy:
       fail-fast: false
       matrix:
