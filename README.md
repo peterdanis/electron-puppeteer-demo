@@ -1,4 +1,4 @@
-# Electron + Puppeteer (+ Jest optionally)
+# Electron + Puppeteer (and optionally Jest)
 
 Simple repo to showcase how to use Puppeteer for end-to-end testing of Electron application. For further information see Puppeteer API docs here: https://github.com/puppeteer/puppeteer/blob/master/docs/api.md
 
@@ -32,7 +32,7 @@ For full example please see https://github.com/peterdanis/electron-puppeteer-dem
 
 [![Github Actions badge](https://github.com/peterdanis/electron-puppeteer-demo/workflows/Tests/badge.svg?event=push)](https://github.com/peterdanis/electron-puppeteer-demo/actions?query=workflow%3ATests+event%3Apush)
 
-Currently the tests are being run for Electron versions from 12 to beta on Linux, MacOS and Windows. [Go to test results](https://github.com/peterdanis/electron-puppeteer-demo/actions?query=workflow%3ATests+event%3Apush)
+Currently the tests are being run for Electron versions from 18 to beta on Linux, MacOS and Windows. [Go to test results](https://github.com/peterdanis/electron-puppeteer-demo/actions?query=workflow%3ATests+event%3Apush)
 
 ## How to use
 
